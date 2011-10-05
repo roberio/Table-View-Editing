@@ -18,14 +18,18 @@
     
     appDelegate = [[UIApplication sharedApplication] delegate];
     
+    // Adiciona o titulo na NavigationBar
     [self.navigationItem setTitle:@"Lista"];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addAction:)];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Editar" style:UIBarButtonItemStylePlain target:self action:@selector(editAction:)];
+    // Cria o botão do lado direito da NavigationBar
+    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addAction:)] autorelease];
+    // Cria o botão do lado esquerdo da NavigationBar
+    self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Editar" style:UIBarButtonItemStylePlain target:self action:@selector(editAction:)] autorelease];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    // Atualiza os dados da tableView
     [self.tableView reloadData];
 }
 
@@ -33,11 +37,14 @@
 {
     NSMutableDictionary *novaPessoa = [[NSMutableDictionary alloc] init];
     [novaPessoa setValue:@"" forKey:@"nome"];
+    // Adiciona novaPessoa no array nomes
     [appDelegate.names addObject:novaPessoa];
     
     EditStringViewController *editView = [[EditStringViewController alloc] init];
     editView.recebePessoa = novaPessoa;
     [self.navigationController pushViewController:editView animated:YES];
+    [novaPessoa release];
+    [editView release];
 }
 
 - (void)editAction:(id)sender
@@ -79,6 +86,7 @@
     EditStringViewController *editView = [[EditStringViewController alloc] init];
     editView.recebePessoa = pesquisa;
     [self.navigationController pushViewController:editView animated:YES];
+    [editView release];
 }
 
 - (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath 

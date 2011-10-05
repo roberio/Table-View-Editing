@@ -38,7 +38,7 @@
     
     appDelegate = [[UIApplication sharedApplication] delegate];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"OK" style:UIBarButtonItemStylePlain target:self action:@selector(doneAction:)];
+    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"OK" style:UIBarButtonItemStylePlain target:self action:@selector(doneAction:)] autorelease];
     self.navigationItem.hidesBackButton = YES;
     // Do any additional setup after loading the view from its nib.
 }

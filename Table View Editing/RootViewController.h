@@ -15,7 +15,9 @@
     AppDelegate *appDelegate;
 }
 
+// Método para adiconar
 - (void)addAction:(id)sender;
+// Método para editar
 - (void)editAction:(id)sender;
 
 @end

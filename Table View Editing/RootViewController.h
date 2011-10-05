@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class AppDelegate;
+
 @interface RootViewController : UITableViewController
+{
+    AppDelegate *appDelegate;
+}
+
+- (void)addAction:(id)sender;
+- (void)editAction:(id)sender;
 
 @end

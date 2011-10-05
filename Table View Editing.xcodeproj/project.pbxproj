@@ -12,7 +12,7 @@
 		83B3F031143CCA5000727A65 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B3F030143CCA4F00727A65 /* CoreGraphics.framework */; };
 		83B3F037143CCA5000727A65 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 83B3F035143CCA5000727A65 /* InfoPlist.strings */; };
 		83B3F039143CCA5000727A65 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B3F038143CCA5000727A65 /* main.m */; };
-		83B3F03D143CCA5000727A65 /* Table_View_EditingAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B3F03C143CCA5000727A65 /* Table_View_EditingAppDelegate.m */; };
+		83B3F03D143CCA5000727A65 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B3F03C143CCA5000727A65 /* AppDelegate.m */; };
 		83B3F040143CCA5000727A65 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83B3F03E143CCA5000727A65 /* MainWindow.xib */; };
 		83B3F043143CCA5000727A65 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B3F042143CCA5000727A65 /* RootViewController.m */; };
 		83B3F046143CCA5000727A65 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83B3F044143CCA5000727A65 /* RootViewController.xib */; };
@@ -23,6 +23,8 @@
 		83B3F059143CCA5000727A65 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 83B3F057143CCA5000727A65 /* InfoPlist.strings */; };
 		83B3F05B143CCA5000727A65 /* Table_View_EditingTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 83B3F05A143CCA5000727A65 /* Table_View_EditingTests.h */; };
 		83B3F05D143CCA5000727A65 /* Table_View_EditingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B3F05C143CCA5000727A65 /* Table_View_EditingTests.m */; };
+		83B3F072143CCC4B00727A65 /* EditStringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B3F070143CCC4B00727A65 /* EditStringViewController.m */; };
+		83B3F073143CCC4B00727A65 /* EditStringViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83B3F071143CCC4B00727A65 /* EditStringViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,8 +46,8 @@
 		83B3F036143CCA5000727A65 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		83B3F038143CCA5000727A65 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		83B3F03A143CCA5000727A65 /* Table View Editing-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Table View Editing-Prefix.pch"; sourceTree = "<group>"; };
-		83B3F03B143CCA5000727A65 /* Table_View_EditingAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Table_View_EditingAppDelegate.h; sourceTree = "<group>"; };
-		83B3F03C143CCA5000727A65 /* Table_View_EditingAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Table_View_EditingAppDelegate.m; sourceTree = "<group>"; };
+		83B3F03B143CCA5000727A65 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		83B3F03C143CCA5000727A65 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		83B3F03F143CCA5000727A65 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		83B3F041143CCA5000727A65 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		83B3F042143CCA5000727A65 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
@@ -56,6 +58,9 @@
 		83B3F058143CCA5000727A65 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		83B3F05A143CCA5000727A65 /* Table_View_EditingTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Table_View_EditingTests.h; sourceTree = "<group>"; };
 		83B3F05C143CCA5000727A65 /* Table_View_EditingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Table_View_EditingTests.m; sourceTree = "<group>"; };
+		83B3F06F143CCC4B00727A65 /* EditStringViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditStringViewController.h; path = ../EditStringViewController.h; sourceTree = "<group>"; };
+		83B3F070143CCC4B00727A65 /* EditStringViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditStringViewController.m; path = ../EditStringViewController.m; sourceTree = "<group>"; };
+		83B3F071143CCC4B00727A65 /* EditStringViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EditStringViewController.xib; path = ../EditStringViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,12 +121,15 @@
 		83B3F032143CCA5000727A65 /* Table View Editing */ = {
 			isa = PBXGroup;
 			children = (
-				83B3F03B143CCA5000727A65 /* Table_View_EditingAppDelegate.h */,
-				83B3F03C143CCA5000727A65 /* Table_View_EditingAppDelegate.m */,
+				83B3F03B143CCA5000727A65 /* AppDelegate.h */,
+				83B3F03C143CCA5000727A65 /* AppDelegate.m */,
 				83B3F03E143CCA5000727A65 /* MainWindow.xib */,
 				83B3F041143CCA5000727A65 /* RootViewController.h */,
 				83B3F042143CCA5000727A65 /* RootViewController.m */,
 				83B3F044143CCA5000727A65 /* RootViewController.xib */,
+				83B3F06F143CCC4B00727A65 /* EditStringViewController.h */,
+				83B3F070143CCC4B00727A65 /* EditStringViewController.m */,
+				83B3F071143CCC4B00727A65 /* EditStringViewController.xib */,
 				83B3F033143CCA5000727A65 /* Supporting Files */,
 			);
 			path = "Table View Editing";
@@ -230,6 +238,7 @@
 				83B3F037143CCA5000727A65 /* InfoPlist.strings in Resources */,
 				83B3F040143CCA5000727A65 /* MainWindow.xib in Resources */,
 				83B3F046143CCA5000727A65 /* RootViewController.xib in Resources */,
+				83B3F073143CCC4B00727A65 /* EditStringViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,8 +275,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				83B3F039143CCA5000727A65 /* main.m in Sources */,
-				83B3F03D143CCA5000727A65 /* Table_View_EditingAppDelegate.m in Sources */,
+				83B3F03D143CCA5000727A65 /* AppDelegate.m in Sources */,
 				83B3F043143CCA5000727A65 /* RootViewController.m in Sources */,
+				83B3F072143CCC4B00727A65 /* EditStringViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,6 +453,7 @@
 				83B3F062143CCA5000727A65 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		83B3F063143CCA5000727A65 /* Build configuration list for PBXNativeTarget "Table View EditingTests" */ = {
 			isa = XCConfigurationList;
@@ -451,6 +462,7 @@
 				83B3F065143CCA5000727A65 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

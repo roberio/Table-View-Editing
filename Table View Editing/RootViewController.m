@@ -7,55 +7,53 @@
 //
 
 #import "RootViewController.h"
+#import "EditStringViewController.h"
+#import "AppDelegate.h"
 
 @implementation RootViewController
-
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    appDelegate = [[UIApplication sharedApplication] delegate];
+    
+    [self.navigationItem setTitle:@"Lista"];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addAction:)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Editar" style:UIBarButtonItemStylePlain target:self action:@selector(editAction:)];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self.tableView reloadData];
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)addAction:(id)sender
 {
-    [super viewDidAppear:animated];
+    NSMutableDictionary *novaPessoa = [[NSMutableDictionary alloc] init];
+    [novaPessoa setValue:@"" forKey:@"nome"];
+    [appDelegate.names addObject:novaPessoa];
+    
+    EditStringViewController *editView = [[EditStringViewController alloc] init];
+    editView.recebePessoa = novaPessoa;
+    [self.navigationController pushViewController:editView animated:YES];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
+- (void)editAction:(id)sender
 {
-	[super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-	[super viewDidDisappear:animated];
-}
-
-/*
- // Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	// Return YES for supported orientations.
-	return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
- */
-
-// Customize the number of sections in the table view.
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
+    if ([self.tableView isEditing]) {
+		[self setEditing:NO animated:YES];
+	} else {
+		[self setEditing:YES animated:YES];
+	}
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return [appDelegate.names count];
 }
 
-// Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
@@ -63,78 +61,60 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     }
-
+    
     // Configure the cell.
+    NSDictionary *n = [appDelegate.names objectAtIndex:indexPath.row];
+    NSString *titulo = [n valueForKey:@"nome"];
+    
+    cell.textLabel.text = titulo;
+
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath 
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete)
-    {
-        // Delete the row from the data source.
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }
-    else if (editingStyle == UITableViewCellEditingStyleInsert)
-    {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    /*
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-    // ...
-    // Pass the selected object to the new view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
-    [detailViewController release];
-	*/
+    NSMutableDictionary *pesquisa = [appDelegate.names objectAtIndex:indexPath.row];   
+    EditStringViewController *editView = [[EditStringViewController alloc] init];
+    editView.recebePessoa = pesquisa;
+    [self.navigationController pushViewController:editView animated:YES];
 }
 
-- (void)didReceiveMemoryWarning
+- (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Relinquish ownership any cached data, images, etc that aren't in use.
+	return NO;
 }
 
-- (void)viewDidUnload
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-    [super viewDidUnload];
+	return UITableViewCellEditingStyleNone;
+}
 
-    // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
-    // For example: self.myOutlet = nil;
+- (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIdexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath 
+{
+	if ([proposedDestinationIndexPath row] >= [appDelegate.names count]) {
+		NSIndexPath *betterIndexPath = [NSIndexPath indexPathForRow:([appDelegate.names count] - 1) inSection:0];
+		return betterIndexPath;
+	}
+	return proposedDestinationIndexPath;
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath 
+{
+	[appDelegate.names exchangeObjectAtIndex:[fromIndexPath row] withObjectAtIndex:[toIndexPath row]];
+}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated 
+{
+	[super setEditing:editing animated:animated];
+	if ([self.tableView isEditing]) { 
+		[self.tableView setEditing:editing animated:animated];
+		[self.navigationItem.leftBarButtonItem setTitle:@"OK"];
+    }else {
+		[self.tableView setEditing:editing animated:animated];
+		[self.navigationItem.leftBarButtonItem setTitle:@"Editar"];
+	}
 }
 
 - (void)dealloc

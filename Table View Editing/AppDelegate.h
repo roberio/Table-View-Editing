@@ -8,10 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface Table_View_EditingAppDelegate : NSObject <UIApplicationDelegate>
+@interface AppDelegate : NSObject <UIApplicationDelegate>
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
+
+@property (nonatomic, retain) NSMutableArray *names;
+
+- (void)loadData;
+- (void)saveData;
+- (NSString *)pathForFileInDocuments:(NSString *)filename;
 
 @end
